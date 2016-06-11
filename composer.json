@@ -1,0 +1,31 @@
+{
+    "name": "mrprompt/sendgrid-template-tester",
+    "description": "sendgrid tester",
+    "type": "application",
+    "require": {
+        "symfony/console": "^3.0@dev",
+	    "sendgrid/sendgrid": "dev-master",
+        "vlucas/phpdotenv": "^2.2"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~5.0.7"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Thiago Paes",
+            "email": "mrprompt@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "autoload": {
+        "psr-4": {
+            "MrPrompt\\SendGrid\\Console\\Template\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "MrPrompt\\Tests\\SendGrid\\Console\\Template\\": "tests/"
+        }
+    }
+}
