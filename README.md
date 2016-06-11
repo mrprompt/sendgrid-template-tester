@@ -15,5 +15,5 @@ SENDGRID_API_TOKEN="meu-token-do-sendgrid"
 ### Uso
 
 ```
-$ php console.php template:test 'template-id' 'email-de-destino' 'email-de-origem' '[tags]'
+$ php console.php template:test 'template-id' 'email-de-destino' 'email-de-origem' 'tag1nome:tag1valor' 'tag2nome:tag2valor' '...'
 ```
