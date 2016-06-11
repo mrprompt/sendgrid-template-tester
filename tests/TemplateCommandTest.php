@@ -75,4 +75,23 @@ class TemplateCommandTest extends \PHPUnit_Framework_TestCase
 
         $this->assertNotEmpty($tester->getDisplay());
     }
+
+    /**
+     * @test
+     */
+    public function runCommandWithValidArgumentsAnddSubstitutionsMustBeRunCorrectly()
+    {
+        $command = $this->command;
+
+        $tester = new CommandTester($command);
+        $tester->execute([
+            'command'   => $command->getName(),
+            'template'  => '00-00-00-00',
+            'email'     => 'foo@foobar.bar',
+            'from'      => 'foo@foobar.bar',
+            'tags'      => ['foo:bar'],
+        ]);
+
+        $this->assertNotEmpty($tester->getDisplay());
+    }
 }

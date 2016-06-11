@@ -1,5 +1,7 @@
 # SendGrid Template Tester
 
+[![Build Status](https://travis-ci.org/mrprompt/sendgrid-template-tester.svg?branch=master)](https://travis-ci.org/mrprompt/sendgrid-template-tester)
+
 Uma forma simples de testar seus templates do SendGrid
 
 ### Instalação

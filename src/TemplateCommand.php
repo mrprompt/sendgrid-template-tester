@@ -27,7 +27,7 @@ class TemplateCommand extends Command
             ->addArgument('template', InputArgument::REQUIRED, 'Template ID')
             ->addArgument('email', InputArgument::REQUIRED, 'Email to sent')
             ->addArgument('from', InputArgument::REQUIRED, 'Email sender')
-            ->addArgument('tags', InputArgument::OPTIONAL, 'Substitutions used in template', [])
+            ->addArgument('tags', InputArgument::IS_ARRAY, 'Substitutions used in template', [])
         ;
     }
 
@@ -44,6 +44,13 @@ class TemplateCommand extends Command
             $template   = $input->getArgument('template');
             $tags       = $input->getArgument('tags');
             $from       = $input->getArgument('from');
+            $substitutions = [];
+
+            foreach ($tags as $tag) {
+                list($item, $content) = explode(':', $tag);
+
+                $substitutions[$item] = [$content];
+            }
 
             $email  = new Email();
             $email
@@ -52,7 +59,7 @@ class TemplateCommand extends Command
                 ->setSubject(' ')
                 ->setHtml(' ')
                 ->setTemplateId($template)
-                ->setSubstitutions($tags);
+                ->setSubstitutions($substitutions);
 
             $sender = new SendGrid($apiKey);
             $sender->send($email);
